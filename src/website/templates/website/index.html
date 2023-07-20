@@ -1,5 +1,22 @@
 {% extends 'website/base.html' %}
 
 {% block content %}
-<h1>hello world</h1>
+</br>
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+        {% if user.is_authenticated %}
+        <h1>hello world</h1>
+        {% else %}
+        <h1>Sign Up</h1>
+        </br>
+        <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+        </br>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
 {% endblock %}
